@@ -12,12 +12,23 @@ SELF_NAME="jaredpsloan"
 START_MARK="<!-- REPO-INDEX:START -->"
 END_MARK="<!-- REPO-INDEX:END -->"
 
-table=$(active_repos_tsv \
-  | sort -f -t $'\t' -k1,1 \
-  | awk -F'\t' -v self="$SELF_NAME" '
-      BEGIN { print "| Repo | Description | Visibility |"; print "| --- | --- | --- |" }
-      $1 != self { printf "| [%s](%s) | %s | %s |\n", $1, $4, $2, $3 }
-    ')
+rows_tsv=$(active_repos_tsv | sort -f -t $'\t' -k1,1)
+
+if [ -z "$rows_tsv" ]; then
+  # A transient empty/erroring API response should never wipe out a
+  # previously-good table - fail loudly instead (bit us once already).
+  echo "No active repos returned by the GitHub API - aborting without touching README.md" >&2
+  exit 1
+fi
+
+table="| Repo | Status | Description | Visibility |
+| --- | --- | --- | --- |"
+while IFS=$'\t' read -r name description visibility url; do
+  [ "$name" = "$SELF_NAME" ] && continue
+  status=$(repo_status "$name")
+  table="$table
+| [$name]($url) | $status | $description | $visibility |"
+done <<< "$rows_tsv"
 
 generated_line="_Last updated: $(date -u +%Y-%m-%dT%H:%M:%SZ)_"
 
