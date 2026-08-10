@@ -6,13 +6,13 @@
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
+source scripts/lib/active-repos.sh
 
 SELF_NAME="jaredpsloan"
 START_MARK="<!-- REPO-INDEX:START -->"
 END_MARK="<!-- REPO-INDEX:END -->"
 
-table=$(gh api user/repos -X GET -f type=owner -f per_page=100 --paginate \
-  --jq '.[] | select(.fork == false) | [.name, (.description // ""), (if .private then "Private" else "Public" end), .html_url] | @tsv' \
+table=$(active_repos_tsv \
   | sort -f -t $'\t' -k1,1 \
   | awk -F'\t' -v self="$SELF_NAME" '
       BEGIN { print "| Repo | Description | Visibility |"; print "| --- | --- | --- |" }

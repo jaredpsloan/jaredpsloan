@@ -1,6 +1,6 @@
 # Jared Sloan
 
-Index of my active repos. The table below is regenerated automatically once a week (and on demand) by [`scripts/generate-index.sh`](scripts/generate-index.sh) via [`.github/workflows/update-index.yml`](.github/workflows/update-index.yml) — new repos show up here on their own, nothing to maintain by hand.
+Index of my active repos. The table below is regenerated automatically once a week (and on demand) by [`scripts/generate-index.sh`](scripts/generate-index.sh) via [`.github/workflows/update-index.yml`](.github/workflows/update-index.yml) — new repos show up here on their own, nothing to maintain by hand. Repos created before 2020 (old legacy/practice repos) are excluded by a fixed cutoff date in the script, not a maintained name list.
 
 <details>
 <summary>One-time setup (already done locally, needed once for the automation to run in CI)</summary>
@@ -17,6 +17,13 @@ Without this secret, the scheduled workflow runs but the listing step will fail 
 <!-- REPO-INDEX:START -->
 | Repo | Description | Visibility |
 | --- | --- | --- |
+| [house-real-estate-investing](https://github.com/jaredpsloan/house-real-estate-investing) | Real estate research: current home analysis and relocation market comparison. | Private |
+| [mineral-saga](https://github.com/jaredpsloan/mineral-saga) | Mineral Saga business: brand site, eBay store, mineral-ID app, and multi-cloud identity-federation reference. | Private |
+| [packetpupper](https://github.com/jaredpsloan/packetpupper) | Music project growth plan and tech career strategy guides. | Private |
+| [retro-games](https://github.com/jaredpsloan/retro-games) | Placeholder for a future retro games project. | Private |
+| [rodtheprod](https://github.com/jaredpsloan/rodtheprod) | 2d platform and chrono trigger style mix up game | Private |
+| [sticker-business](https://github.com/jaredpsloan/sticker-business) | Business plan for a niche e-commerce sticker operation (Etsy/eBay). | Private |
+| [wizard-crystal-game](https://github.com/jaredpsloan/wizard-crystal-game) | Premium single-player fantasy card game — business plan, dev strategy, and lore guides. | Private |
 
-_Last updated: 2026-08-10T01:55:27Z_
+_Last updated: 2026-08-10T02:15:28Z_
 <!-- REPO-INDEX:END -->
