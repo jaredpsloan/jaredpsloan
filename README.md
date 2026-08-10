@@ -17,18 +17,6 @@ Without this secret, the scheduled workflow runs but the listing step will fail 
 <!-- REPO-INDEX:START -->
 | Repo | Description | Visibility |
 | --- | --- | --- |
-| [business-card](https://github.com/jaredpsloan/business-card) | PHP/JS business card and email signature generator. | Private |
-| [house-real-estate-investing](https://github.com/jaredpsloan/house-real-estate-investing) | Real estate research: current home analysis and relocation market comparison. | Private |
-| [js-calc](https://github.com/jaredpsloan/js-calc) | Simple client-side calculator built in vanilla JS. | Private |
-| [mineral-saga](https://github.com/jaredpsloan/mineral-saga) | Mineral Saga business: brand site, eBay store, mineral-ID app, and multi-cloud identity-federation reference. | Private |
-| [packetpupper](https://github.com/jaredpsloan/packetpupper) | Music project growth plan and tech career strategy guides. | Private |
-| [phpcalc](https://github.com/jaredpsloan/phpcalc) | Simple server-side calculator built in PHP. | Private |
-| [retro-games](https://github.com/jaredpsloan/retro-games) | Placeholder for a future retro games project. | Private |
-| [rodtheprod](https://github.com/jaredpsloan/rodtheprod) | 2d platform and chrono trigger style mix up game | Public |
-| [sticker-business](https://github.com/jaredpsloan/sticker-business) | Business plan for a niche e-commerce sticker operation (Etsy/eBay). | Private |
-| [Text-Converter-With-Pointers](https://github.com/jaredpsloan/Text-Converter-With-Pointers) | Converts Text into different cases using pointers in C. | Private |
-| [wizard-crystal-game](https://github.com/jaredpsloan/wizard-crystal-game) | Premium single-player fantasy card game — business plan, dev strategy, and lore guides. | Private |
-| [wpscan](https://github.com/jaredpsloan/wpscan) | WPScan is a black box WordPress vulnerability scanner. | Private |
 
-_Last updated: 2026-08-10T00:05:26Z_
+_Last updated: 2026-08-10T01:55:27Z_
 <!-- REPO-INDEX:END -->
