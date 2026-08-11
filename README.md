@@ -1,5 +1,33 @@
 # Jared Sloan
 
+## Career
+
+Senior Data Platform Engineer at CVS Health (remote, New Haven, CT),
+focused on building reliable, scalable data systems. Background: SQL
+Server database administration in healthcare (HL7 data exchange, 24/7
+production ownership, ETL/reporting via SSRS and SSIS) before moving into
+multi-cloud data platform engineering — including cross-cloud database
+engine evaluation work (e.g. Google Cloud AlloyDB) and applied,
+production-oriented AI tooling.
+
+MS from Central Connecticut State University, BS from University of
+Massachusetts Lowell. SAFe Practitioner certified.
+
+**Currently:** studying for the Azure Database Administrator Associate
+(DP-300) — a direct extension of the SQL Server DBA background onto
+Azure. **Planned next:** the Fabric Data Engineer Associate (DP-700),
+Microsoft's current data-engineering credential (replacing the retired
+DP-203) and the natural complement to DP-300 — administering *and*
+building the platform, together a closer match to the actual job than
+either cert alone.
+
+The repos below are a mix of professional-adjacent infrastructure
+practice (multi-cloud OIDC/Workload Identity Federation, cost governance,
+applied AI pipelines — see [mineral-saga](https://github.com/jaredpsloan/mineral-saga)
+for the most complete example) and personal projects.
+
+## Repo index
+
 Index of my active repos. The table below is regenerated automatically once a week (and on demand) by [`scripts/generate-index.sh`](scripts/generate-index.sh) via [`.github/workflows/update-index.yml`](.github/workflows/update-index.yml) — new repos show up here on their own, nothing to maintain by hand. Repos created before 2020 (old legacy/practice repos) are excluded by a fixed cutoff date in the script, not a maintained name list.
 
 ## Repo-context convention
