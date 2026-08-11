@@ -1,0 +1,51 @@
+name: Deploy website to GitHub Pages
+
+# Free interim deployment for website/index.html -- no cloud credentials
+# needed at all (uses the default GITHUB_TOKEN's native Pages permissions),
+# unlike the AWS S3+CloudFront+Route53 deployment in website/README.md,
+# which is the actual target but needs a working AWS CLI credential this
+# environment doesn't have. This gets the site live today; swap/retire
+# once jaredsloan.com is live on AWS, or keep both -- GitHub Pages costs
+# nothing to leave running.
+#
+# ONE MANUAL STEP NOT DOABLE VIA THIS FILE ALONE: Settings -> Pages ->
+# Build and deployment -> Source: "GitHub Actions" must be selected once
+# in the repo settings UI before this workflow's deployment step will
+# succeed (a repo-settings toggle, not something a workflow file or
+# GITHUB_TOKEN can flip on its own).
+
+on:
+  push:
+    branches: [master]
+    paths: ["website/index.html"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare Pages artifact
+        run: |
+          mkdir -p _site
+          cp website/index.html _site/index.html
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
