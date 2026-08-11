@@ -26,6 +26,11 @@ practice (multi-cloud OIDC/Workload Identity Federation, cost governance,
 applied AI pipelines — see [mineral-saga](https://github.com/jaredpsloan/mineral-saga)
 for the most complete example) and personal projects.
 
+**[website/](website/)** — source for jaredsloan.com, a single-page site
+built from the Career section above. Complete and self-contained, not yet
+deployed — see [website/README.md](website/README.md) for the AWS
+S3+CloudFront+Route53 hosting plan and the one-time setup script.
+
 ## Repo index
 
 Index of my active repos. The table below is regenerated automatically once a week (and on demand) by [`scripts/generate-index.sh`](scripts/generate-index.sh) via [`.github/workflows/update-index.yml`](.github/workflows/update-index.yml) — new repos show up here on their own, nothing to maintain by hand. Repos created before 2020 (old legacy/practice repos) are excluded by a fixed cutoff date in the script, not a maintained name list.
