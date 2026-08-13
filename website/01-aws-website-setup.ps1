@@ -201,7 +201,6 @@ if ([string]::IsNullOrWhiteSpace($existingDist)) {
             TargetOriginId = "s3-$BucketName"
             ViewerProtocolPolicy = "redirect-to-https"
             AllowedMethods = @{ Quantity = 2; Items = @("GET", "HEAD") }
-            CachedMethods = @{ Quantity = 2; Items = @("GET", "HEAD") }
             ForwardedValues = @{ QueryString = $false; Cookies = @{ Forward = "none" } }
             MinTTL = 300
             DefaultTTL = 86400
