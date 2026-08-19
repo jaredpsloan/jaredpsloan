@@ -1,27 +1,15 @@
 # jaredsloan.com
 
-**Status: built, one toggle away from live on GitHub Pages as a free
-interim step; AWS is the real target, still pending.** `index.html` is a
-complete, self-contained static site (fonts inlined, no external
-requests, no build step).
-[`deploy-pages.yml`](../.github/workflows/deploy-pages.yml) auto-deploys
-it to GitHub Pages on every push — zero cloud credentials needed for
-that, since it only uses GitHub's own built-in Pages permissions. One
-manual step neither that workflow nor `git push` can do on its own:
-**Settings → Pages → Build and deployment → Source: "GitHub Actions"**
-must be toggled once in the repo's web UI — a repo-settings change, not
-something any workflow file can flip itself, and not verifiable from this
-session either way (private repo, no API token here — see
-[RESUME.md](../RESUME.md)). After that toggle, the site should be live at
-`https://jaredpsloan.github.io/jaredpsloan/`; the workflow run's own log
-is the actual confirmation once you check it.
+**Status: live** at [jaredsloan.com](https://jaredsloan.com) (AWS S3 +
+CloudFront + ACM + Route53, matching the real domain — see "To deploy"
+below). `index.html` is a complete, self-contained static site (fonts
+inlined, no external requests, no build step).
 
-The AWS S3+CloudFront+Route53 deployment below is still the actual goal
-(matches jaredsloan.com's real domain, and the explicit preference to
-build hands-on AWS experience) — not yet run because it needs a working
-AWS CLI credential, which this session didn't have (see
-`01-aws-website-setup.ps1`'s header for why). GitHub Pages isn't a
-replacement for that, just something live in the meantime.
+GitHub Pages (via
+[`deploy-pages.yml`](../.github/workflows/deploy-pages.yml)) was used
+as a free interim step before the AWS deploy went live and still auto-
+deploys on every push to `https://jaredpsloan.github.io/jaredpsloan/` —
+harmless to leave running, but jaredsloan.com is the real address now.
 
 ## What it is
 

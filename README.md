@@ -27,9 +27,10 @@ applied AI pipelines — see [mineral-saga](https://github.com/jaredpsloan/miner
 for the most complete example) and personal projects.
 
 **[website/](website/)** — source for jaredsloan.com, a single-page site
-built from the Career section above. Complete and self-contained, not yet
-deployed — see [website/README.md](website/README.md) for the AWS
-S3+CloudFront+Route53 hosting plan and the one-time setup script.
+built from the Career section above. **Live** at
+[jaredsloan.com](https://jaredsloan.com) on AWS (S3 + CloudFront + ACM +
+Route53) — see [website/README.md](website/README.md) for the hosting
+setup and how to push content updates.
 
 ## Repo index
 
