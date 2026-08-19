@@ -75,9 +75,11 @@ Invoke-Aws @("s3", "cp", "index.html", "s3://$BucketName/index.html", "--content
 
 # ---------- 2. ACM certificate (MUST be us-east-1 for CloudFront) ----------
 Write-Host "==> Requesting ACM certificate for $Domain (us-east-1, required for CloudFront)"
-$existingCert = Invoke-Aws @("acm", "list-certificates", "--query",
+$existingCert = Invoke-Aws @("acm", "list-certificates", "--certificate-statuses", "PENDING_VALIDATION", "ISSUED", "--query",
     "CertificateSummaryList[?DomainName=='$Domain'].CertificateArn", "--output", "text") -Region "us-east-1" -AllowFailure
 if ([string]::IsNullOrWhiteSpace($existingCert)) {
+    # No live cert (or the prior one went FAILED, e.g. DNS validation timed out because
+    # nameservers hadn't propagated to Route53 yet) -- request a fresh one.
     $CertArn = Invoke-Aws @("acm", "request-certificate",
         "--domain-name", $Domain,
         "--subject-alternative-names", "www.$Domain",
