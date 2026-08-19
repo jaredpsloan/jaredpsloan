@@ -30,17 +30,25 @@ action item shows up — stale checkboxes are worse than no list.
       `az account show`, `gcloud auth list`, `aws sts get-caller-identity`.
       Details: [mineral-saga/infrastructure/bitwarden/README.md](https://github.com/jaredpsloan/mineral-saga/blob/main/infrastructure/bitwarden/README.md).
 
-- [ ] **Confirm the sticker-business Reddit secrets are actually set.** The
-      daily meme-sticker pipeline (`daily-meme-stickers.yml`, 8am ET) is
-      merged and scheduled, but it silently fails until `REDDIT_CLIENT_ID`
-      and `REDDIT_CLIENT_SECRET` exist as repo secrets. Check
-      <https://github.com/jaredpsloan/sticker-business/settings/secrets/actions>;
-      if missing, get them from <https://www.reddit.com/prefs/apps> (create
-      app → type `script`) and add via the GitHub UI or
-      `scripts/admin/setup_github_secrets.py --trigger-test-run`. Detail:
-      [sticker-business/guides/meme-sticker-pipeline.md](https://github.com/jaredpsloan/sticker-business/blob/main/guides/meme-sticker-pipeline.md).
+- [ ] **Reset the sticker-business `CLAUDE_CODE_OAUTH_TOKEN`.** The daily
+      meme-sticker pipeline has been failing every scheduled run since
+      2026-08-13 with `401 Invalid bearer token` on the "Sanity-check
+      Claude Code CLI + auth" step — the token set 2026-08-11 has expired
+      or been invalidated. Run `claude setup-token` locally, then
+      `gh secret set CLAUDE_CODE_OAUTH_TOKEN --repo jaredpsloan/sticker-business`
+      (or `scripts/admin/setup_github_secrets.py --trigger-test-run` to also
+      fire an immediate test run instead of waiting for tomorrow's 8am
+      slot). Detail: [sticker-business/guides/meme-sticker-pipeline.md](https://github.com/jaredpsloan/sticker-business/blob/main/guides/meme-sticker-pipeline.md).
 
 ## Done
+
+- [x] **(2026-08-19) Sticker-business Reddit secrets.** Turned out to be a
+      non-issue — trend discovery no longer uses Reddit at all. It was
+      switched to scraping Know Your Meme's newest-entries page instead
+      (no credential needed; Reddit's OAuth app registration wasn't worth
+      the friction for one signal source). `REDDIT_CLIENT_ID`/
+      `REDDIT_CLIENT_SECRET` are unused now — safe to delete from repo
+      secrets whenever convenient.
 
 *(move items here with the date resolved, instead of deleting — keeps a
 record of what was actually blocking at the time)*
