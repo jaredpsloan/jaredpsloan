@@ -30,15 +30,37 @@ action item shows up — stale checkboxes are worse than no list.
       `az account show`, `gcloud auth list`, `aws sts get-caller-identity`.
       Details: [mineral-saga/infrastructure/bitwarden/README.md](https://github.com/jaredpsloan/mineral-saga/blob/main/infrastructure/bitwarden/README.md).
 
-- [ ] **Reset the sticker-business `CLAUDE_CODE_OAUTH_TOKEN`.** The daily
-      meme-sticker pipeline has been failing every scheduled run since
-      2026-08-13 with `401 Invalid bearer token` on the "Sanity-check
-      Claude Code CLI + auth" step — the token set 2026-08-11 has expired
-      or been invalidated. Run `claude setup-token` locally, then
-      `gh secret set CLAUDE_CODE_OAUTH_TOKEN --repo jaredpsloan/sticker-business`
-      (or `scripts/admin/setup_github_secrets.py --trigger-test-run` to also
-      fire an immediate test run instead of waiting for tomorrow's 8am
-      slot). Detail: [sticker-business/guides/meme-sticker-pipeline.md](https://github.com/jaredpsloan/sticker-business/blob/main/guides/meme-sticker-pipeline.md).
+- [ ] **Two secrets got crossed — fix both.** On 2026-08-22, mid-fix for the
+      two items below, the Claude Code OAuth token from `claude setup-token`
+      got pasted into the wrong place: it landed in `jaredpsloan/jaredpsloan`'s
+      `INDEX_PAT` (twice) instead of `sticker-business`'s
+      `CLAUDE_CODE_OAUTH_TOKEN`. Net result: **both are still broken**, in
+      complementary ways. That Claude token is also now burned (it passed
+      through an agent's view via a screenshot) — don't reuse it, generate
+      fresh.
+      - **jaredpsloan `INDEX_PAT`** currently holds a Claude token, not a
+        GitHub PAT — `gh` errors `Bad credentials (HTTP 401)` on every run
+        of `update-index.yml`. Needs a real fine-grained GitHub PAT
+        (Settings → Developer settings → Fine-grained tokens; Resource
+        owner `jaredpsloan`; Repository access: **All repositories**;
+        permissions: Metadata Read-only + Contents Read-only — regenerate
+        fresh rather than trust the old one is still copyable). Then:
+        `gh secret set INDEX_PAT --repo jaredpsloan/jaredpsloan`.
+      - **sticker-business `CLAUDE_CODE_OAUTH_TOKEN`** is still the original
+        stale value from 2026-08-11 — the daily meme-sticker pipeline has
+        been failing every scheduled run since 2026-08-13 with `401 Invalid
+        bearer token` on "Sanity-check Claude Code CLI + auth". Run
+        `claude setup-token` locally (fresh — not the burned one above),
+        then `gh secret set CLAUDE_CODE_OAUTH_TOKEN --repo jaredpsloan/sticker-business`.
+      - No `export` step needed for either — that's a bash builtin, doesn't
+        exist in cmd.exe, and isn't actually required for the `gh secret
+        set` flow anyway.
+      - **Verify by actual output, not exit code** — both workflows have
+        reported green while doing nothing/wrong before:
+        `gh workflow run update-index.yml` then check the table between
+        `<!-- REPO-INDEX:START -->`/`END` in `jaredpsloan/README.md` isn't
+        empty; `gh workflow run daily-meme-stickers.yml` then
+        `gh run view --log` and confirm no `401`.
 
 ## Done
 
