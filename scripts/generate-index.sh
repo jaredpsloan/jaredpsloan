@@ -14,8 +14,6 @@ END_MARK="<!-- REPO-INDEX:END -->"
 
 rows_tsv=$(active_repos_tsv | sort -f -t $'\t' -k1,1)
 
-echo "DEBUG: $(printf '%s\n' "$rows_tsv" | grep -c .) rows: $(printf '%s\n' "$rows_tsv" | cut -f1 | tr '\n' ',')" >&2
-
 if [ -z "$rows_tsv" ]; then
   # A transient empty/erroring API response should never wipe out a
   # previously-good table - fail loudly instead (bit us once already).
