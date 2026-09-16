@@ -16,7 +16,7 @@ infrastructure I own. Total cloud spend for all of it: about $25 a month.
 | | |
 |---|---|
 | **[deedective.com](https://deedective.com)** | Parcel boundaries joined to FEMA flood zones, recorded sales, wetlands, septic suitability, utilities and a modelled airport-noise contour for 18 Connecticut towns, 225,000 parcels. One free-tier VM, nightly backups, tested restore. |
-| **[chargecliff.com](https://chargecliff.com)** | EV fast-charge time and highway range from each car's own charge curve. 42 vehicles; 47 regression tests pinned to published dyno benchmarks and 70 mph road tests. The validation pass found the highway model 27% low; the fix and the test are in the history. |
+| **[chargecliff.com](https://chargecliff.com)** | EV fast-charge time and highway range from each car's own charge curve. 42 vehicles; 49 regression tests pinned to published dyno benchmarks and 70 mph road tests. The validation pass found the highway model 27% low; the fix and the test are in the history. |
 | **[permitparser.com](https://permitparser.com)** | Municipal permit and zoning filings from fractured town portals, normalized into one spatial record. Pure parsers tested on fixtures, scrapers that respect robots.txt, PostGIS in CI. |
 
 Consulting: **[pinkgranitedata.com](https://pinkgranitedata.com)**, database
